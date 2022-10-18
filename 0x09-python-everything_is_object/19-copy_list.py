@@ -1,3 +1,4 @@
 #!/usr/bin/python3
-def copy_list(l):
-    return l[:]
+def magic_string(my_list=[]):
+    my_list += ['Coding']
+    return ", ".join(my_list)
