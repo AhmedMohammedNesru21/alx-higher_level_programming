@@ -1,18 +1,9 @@
 #!/usr/bin/python3
-'''
-Write a function that creates an
-Object from a JSON file
-'''
-
-import json
+""" Class to JSON """
 
 
-def load_from_json_file(filename):
-    '''
-    Create object from JSON file
-    '''
-    if filename is None:
-        return
-    with open(filename, 'r', encoding='utf-8') as f:
-        json_var = json.load(f)
-        return json_var
+def class_to_json(obj):
+    """ Returns the dictionary description with simple data structure
+    (list, dictionary, string, integer and boolean)
+    for JSON serialization of an object"""
+    return (obj.__dict__)
