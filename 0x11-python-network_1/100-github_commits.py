@@ -1,16 +1,23 @@
 #!/usr/bin/python3
-"""Python script that lists list 10 commits (from the most recent
-to oldest) of the repository rails by the user rails."""
-
-import requests
-from sys import argv
+""" Interview """
 
 if __name__ == "__main__":
-    url = "https://api.github.com/repos/{}/{}/commits?per_page=10"\
-          .format(argv[2], argv[1])
-
-    request = requests.get(url)
-    commits = request.json()
-    for commit in commits:
-        print("{}: {}".format(commit.get("sha"),
-                              commit.get("commit").get("author").get("name")))
+    from requests import get, auth
+    import sys
+    repo = sys.argv[1]
+    user = sys.argv[2]
+    url = 'https://api.github.com/repos/{}/{}/commits'.format(user, repo)
+    r = get(url)
+    try:
+        js_var = r.json()
+        for j in js_var[:10]:
+            author, name = None, None
+            sha = j.get('sha')
+            commit = j.get('commit')
+            if commit:
+                author = commit.get('author')
+            if author:
+                name = author.get('name')
+            print("{}: {}".format(sha, name))
+    except ValueError:
+        print("Not a valid JSON")
