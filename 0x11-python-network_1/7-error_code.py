@@ -1,11 +1,13 @@
 #!/usr/bin/python3
-# task 7
-import requests
-import sys
+"""Python script that takes in a URL, sends a request
+to the URL and displays the body of the response."""
 
-if __name__ == '__main__':
-    req = requests.get(sys.argv[1])
-    if req.status_code >= 400:
-        print("Error code: {}".format(req.status_code))
+import requests
+from sys import argv
+
+if __name__ == "__main__":
+    request = requests.get(argv[1])
+    if request.status_code >= 400:
+        print("Error code: {}".format(request.status_code))
     else:
-        print(req.text)
+        print(request.text)

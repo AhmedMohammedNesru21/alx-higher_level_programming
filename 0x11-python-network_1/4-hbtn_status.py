@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-# task4
+"""Python script that fetches https://intranet.hbtn.io/status."""
+
 import requests
 
-if __name__ == '__main__':
-    url = 'https://intranet.hbtn.io/status'
-    r = requests.get(url)
+if __name__ == "__main__":
+    content = requests.get("https://intranet.hbtn.io/status").text
     print("Body response:")
-    print("\t- type: {}\n\t- content: {}".format(
-        type(r.text), r.text))
+    print("\t- type: {}".format(type(content)))
+    print("\t- content: {}".format(content))

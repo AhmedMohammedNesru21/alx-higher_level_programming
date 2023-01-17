@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-# task 10
-import sys
-import requests
+"""Python script that takes GitHub credentials (username and
+password) and uses the GitHub API to display the user id."""
 
-if __name__ == '__main__':
-    url = 'https://api.github.com/user'
-    user = str(sys.argv[1])
-    passw = sys.argv[2]
-    req = requests.get(url, auth=(user, passw))
-    print(req.json().get('id'))
+import requests
+from sys import argv
+
+if __name__ == "__main__":
+    auth = (argv[1], argv[2])
+    request = requests.get("https://api.github.com/user", auth=auth)
+    print(request.json().get("id"))
